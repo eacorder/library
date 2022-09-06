@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/book.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <title>Library</title>
+</head>
+<body>
+    <main >
+        <h1>INVENTORY</h1>
+        <div class="container">
+            <div class="book">
+                <h3>Don quijote</h1>
+                 <span>By: Miguel Cervantes</span>
+                 <span>Number of Pages: 84</span>
+                 <span>Already Read: yes</span>
+            </div>  
+        </div>
+    </main>
+    <aside >
+       
+        <h1>LIBRARY</h1> 
+        <div class="line"></div>
+        <h2>Create Book</h2>
+        <div class="Create">
+            <form>
+                <div class="formField">
+                    <label>Title</label>
+                    <input class="fields" id="title" type="text" />
+                </div>
+                <div class="formField">
+                    <label>Author</label>
+                    <input class="fields" id="author" type="text" />
+                </div>
+                <div class="formField">
+                    <label># Pages</label>
+                    <input class="fields" id="pages" type="number" />
+                </div>  
+                <div class="formField">
+                    <label>Have you read this book?</label>        
+                    <select class="fields"  id="read">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option> 
+                    </select>
+                               
+                </div>  
+            </form>              
+        </div>
+        <button class="save">Create</button>  
+           
+    </aside> 
+    <script type="text/javascript" src="function.js"></script>
+</body>
+</html>
