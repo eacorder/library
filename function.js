@@ -48,6 +48,7 @@ function cardRender() {
         const div = document.createElement('div');
         const title = document.createElement('h3'); 
         const button = document.createElement('button');
+        const buttonChange = document.createElement('button');
         const spanAuthor = document.createElement('span');
         const spanPages = document.createElement('span');
         const spanRead = document.createElement('span');
@@ -69,18 +70,28 @@ function cardRender() {
         }
         spanRead.innerHTML = "Already Read: " + read;
         button.innerHTML = "REMOVE"
-        button.classList.add('bookButton')
+        buttonChange.innerHTML = "CHANGE STATUS"
+        button.classList.add('bookButton') 
+        buttonChange.classList.add('buttonChange') 
         button.setAttribute('data-id', bookTemp.id );  
+        buttonChange.setAttribute('data-id', bookTemp.id );  
         button.addEventListener('click', ()=> {   
             let text = "Are you sure you want to remove the book.";
             if (confirm(text) == true) {
                 removeBook(parseInt(button.getAttribute("data-id")));
             }             
         })
+        buttonChange.addEventListener('click', ()=> {   
+            let text = "Are you sure you want to change the book status.";
+            if (confirm(text) == true) {
+                changeStatus(parseInt(buttonChange.getAttribute("data-id")));
+            }             
+        })
         div.appendChild(title); 
         div.appendChild(spanAuthor); 
         div.appendChild(spanPages); 
         div.appendChild(spanRead); 
+        div.appendChild(buttonChange); 
         div.appendChild(button); 
         
         container.appendChild(div);
@@ -107,4 +118,14 @@ function removeBook(bookId) {
     myLibrary.splice( objWithIdIndex, 1 );
     cardRender()
      
-  }
+}
+
+function changeStatus(bookId) {
+    const objWithIdIndex = myLibrary.findIndex(obj => obj.id === bookId);
+    if(myLibrary[objWithIdIndex].read ) {
+        myLibrary[objWithIdIndex].read = 0;
+    }else {
+        myLibrary[objWithIdIndex].read = 1;
+    }
+    cardRender()
+}
