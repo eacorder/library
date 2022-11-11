@@ -16,24 +16,23 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(book) {    
-    if(validate(book)) {
+    if(validate()) {
         myLibrary.push(book); 
     }
-    else {
-        alert ('Todos los campos deben estar llenos')
-    }
+   
   
 }
+
+ 
+
 
 save.addEventListener('click', ()=> {   
     const book = new Book(titleDom.value,authorDom.value,pagesDom.value,readDom.value)
     if(validate(book)) {
         addBookToLibrary(book);
         cardRender(); 
-    }
-    else {
-        alert ('Todos los campos deben estar llenos')
-    }
+        clean();
+    } 
    
 })
 
@@ -99,18 +98,21 @@ function cardRender() {
      
 }
 
-function validate (book) {
-    if (book.title ==""){
-        return false;
+function validate () {
+    const title = document.getElementById("title");
+    const autor = document.getElementById("author");
+    const pages = document.getElementById("pages");
+    if (!title.checkValidity()) {
+        document.querySelector(".error").innerHTML = title.validationMessage;
     }
-    else if (book.author ==""){
-        return false;
+    else if (!autor.checkValidity()) {
+        document.querySelector(".error").innerHTML = autor.validationMessage;
     }
-    else if (book.pages ==""){
-        return false;
+    else if (!pages.checkValidity()) {
+        document.querySelector(".error").innerHTML = pages.validationMessage;
     }
-    else 
-        return true;
+    else return true; 
+     
 }
 
 function removeBook(bookId) {
@@ -128,4 +130,17 @@ function changeStatus(bookId) {
         myLibrary[objWithIdIndex].read = 1;
     }
     cardRender()
+}
+
+function clean() { 
+    const title  = document.querySelector("#title");
+    const autor  = document.querySelector("#author");
+    const pages  = document.querySelector("#pages");
+    const error  = document.querySelector(".error");
+
+    title.value = "";
+    autor.value = "";
+    pages.value = "";
+    error.innerHTML = "";
+    
 }

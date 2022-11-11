@@ -25,17 +25,18 @@
         <h2>Create Book</h2>
         <div class="Create">
             <form>
+                <p class="error"></p>
                 <div class="formField">
                     <label>Title</label>
-                    <input class="fields" id="title" type="text" />
+                    <input class="fields" id="title" type="text" required/>
                 </div>
                 <div class="formField">
                     <label>Author</label>
-                    <input class="fields" id="author" type="text" />
+                    <input class="fields" id="author" type="text" required/>
                 </div>
                 <div class="formField">
                     <label># Pages</label>
-                    <input class="fields" id="pages" type="number" />
+                    <input class="fields" id="pages" type="number" required/>
                 </div>  
                 <div class="formField">
                     <label>Have you read this book?</label>        
@@ -44,7 +45,8 @@
                         <option value="0">No</option> 
                     </select>
                                
-                </div>  
+                </div> 
+                 
             </form>              
         </div>
         <button class="save">Create</button>  
